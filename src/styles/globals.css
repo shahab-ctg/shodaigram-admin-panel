@@ -1,7 +1,8 @@
-/* globals.css */
 @tailwind base;
+@tailwind components;
 @tailwind utilities;
 
+/* Organic theme tokens */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -9,7 +10,7 @@
   --card-foreground: 222.2 84% 4.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-  --primary: 222.2 47.4% 11.2%;
+  --primary: 152 24% 27%; /* approx #2d6a4f */
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96%;
   --secondary-foreground: 222.2 47.4% 11.2%;
@@ -21,50 +22,40 @@
   --destructive-foreground: 210 40% 98%;
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+  --ring: 152 24% 27%;
+  --radius: 0.75rem;
 }
 
-html,
-body,
-#__next {
-  height: 100%;
-}
+html, body, #__next { height: 100%; }
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
 
-a {
-  color: hsl(var(--foreground));
-}
+a { color: hsl(var(--foreground)); }
 
-input,
-select,
-textarea {
+input, select, textarea {
   border: 1px solid hsl(var(--input));
   border-radius: calc(var(--radius) - 2px);
   padding: 0.5rem 0.75rem;
   width: 100%;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
-  ring: 2px solid hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.15);
 }
 
 button {
-  border-radius: 0.75rem;
+  border-radius: var(--radius);
   padding: 0.5rem 1rem;
 }
 
 .card {
   background-color: hsl(var(--card));
   border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
   border: 1px solid hsl(var(--border));
 }
 
@@ -72,18 +63,10 @@ button {
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
 }
+.btn:hover { background-color: hsl(var(--primary) / 0.9); }
 
-.btn:hover {
-  background-color: hsl(222.2 47.4% 11.2% / 0.9);
-}
-
-.btn-outline {
-  border: 1px solid hsl(var(--border));
-}
-
-.btn-outline:hover {
-  background-color: hsl(var(--accent));
-}
+.btn-outline { border: 1px solid hsl(var(--border)); }
+.btn-outline:hover { background-color: hsl(var(--accent)); }
 
 .badge {
   font-size: 0.75rem;
@@ -93,20 +76,6 @@ button {
   border: 1px solid hsl(var(--border));
 }
 
-table {
-  width: 100%;
-  font-size: 0.875rem;
-}
-
-th,
-td {
-  padding: 0.75rem;
-  text-align: left;
-  vertical-align: middle;
-}
-
-thead th {
-  position: sticky;
-  top: 0;
-  background-color: hsl(var(--background));
-}
+table { width: 100%; font-size: 0.875rem; }
+th, td { padding: 0.75rem; text-align: left; vertical-align: middle; }
+thead th { position: sticky; top: 0; background-color: hsl(var(--background)); }

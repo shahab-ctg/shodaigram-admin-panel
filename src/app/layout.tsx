@@ -1,9 +1,12 @@
-import "@/styles/globals.css";
-import Topbar from "@/components/Topbar";
+import "@/styles/globals";
+import Providers from "./providers";
+import AppShell from "@/components/AppShell";
+
 export const metadata = {
   title: "Shodaigram Admin",
   description: "Admin panel for Shodaigram",
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -12,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Topbar />
-        {children}
+        <Providers>
+          <AppShell>{children}</AppShell>
+        </Providers>
       </body>
     </html>
   );
