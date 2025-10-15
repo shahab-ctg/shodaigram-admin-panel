@@ -1,7 +1,11 @@
+// tailwind.config.ts - CORRECT PATHS
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -13,10 +17,9 @@ const config: Config = {
           700: "#1b4332",
         },
       },
-      container: { center: true, padding: "1rem" },
-      borderRadius: { "2xl": "1rem" },
     },
   },
   plugins: [],
 };
+
 export default config;

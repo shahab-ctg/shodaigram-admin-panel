@@ -1,6 +1,13 @@
-import "@/styles/globals";
+import "./globals.css"; 
 import Providers from "./providers";
 import AppShell from "@/components/AppShell";
+import { Outfit } from "next/font/google"; //
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Shodaigram Admin",
@@ -13,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={outfit.variable}>
+      <body className="font-sans">
         <Providers>
           <AppShell>{children}</AppShell>
         </Providers>

@@ -1,41 +1,42 @@
+// src/services/categories.api.ts
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./base";
-import type {
-  Category,
-  CreateCategoryDTO,
-  UpdateCategoryDTO,
-} from "@/types/category";
-import type { ApiOk } from "@/types";
+import type { Category, CategoryStatus } from "@/types/category";
+
+type CreateCategoryDTO = {
+  title: string;
+  slug: string;
+  image?: string;
+  status?: CategoryStatus; // না দিলে সার্ভার ডিফল্ট ACTIVE নিতে পারে
+};
+
+type UpdateCategoryDTO = Partial<CreateCategoryDTO>;
 
 export const categoriesApi = createApi({
   reducerPath: "categoriesApi",
   baseQuery,
   tagTypes: ["Categories"],
   endpoints: (builder) => ({
-    listCategories: builder.query<ApiOk<Category[]>, void>({
-      query: () => "/categories",
-      providesTags: (result) =>
-        result?.data
-          ? [
-              ...result.data.map((c) => ({
-                type: "Categories" as const,
-                id: c._id,
-              })),
-              { type: "Categories" as const, id: "LIST" },
-            ]
-          : [{ type: "Categories" as const, id: "LIST" }],
+    listCategories: builder.query<{ ok: boolean; data: Category[] }, void>({
+      query: () => ({ url: "/categories", method: "GET" }),
+      providesTags: ["Categories"],
     }),
 
     createCategory: builder.mutation<
-      ApiOk<{ id: string; slug: string }>,
+      { ok: boolean; data: { id: string; slug: string } },
       CreateCategoryDTO
     >({
-      query: (body) => ({ url: "/admin/categories", method: "POST", body }),
-      invalidatesTags: [{ type: "Categories", id: "LIST" }],
+      query: (body) => ({
+        url: "/admin/categories",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Categories"],
     }),
 
+    // ⬇️ এখানে সিগনেচার { id, body } — এটা মেনে কল করতে হবে
     updateCategory: builder.mutation<
-      ApiOk<Category>,
+      { ok: boolean; data: Category },
       { id: string; body: UpdateCategoryDTO }
     >({
       query: ({ id, body }) => ({
@@ -43,18 +44,18 @@ export const categoriesApi = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: (r) =>
-        r
-          ? [
-              { type: "Categories", id: r.data._id },
-              { type: "Categories", id: "LIST" },
-            ]
-          : [{ type: "Categories", id: "LIST" }],
+      invalidatesTags: ["Categories"],
     }),
 
-    deleteCategory: builder.mutation<ApiOk<{ id: string }>, string>({
-      query: (id) => ({ url: `/admin/categories/${id}`, method: "DELETE" }),
-      invalidatesTags: [{ type: "Categories", id: "LIST" }],
+    deleteCategory: builder.mutation<
+      { ok: boolean; data: { id: string } },
+      string
+    >({
+      query: (id) => ({
+        url: `/admin/categories/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Categories"],
     }),
   }),
 });

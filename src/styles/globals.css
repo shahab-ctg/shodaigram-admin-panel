@@ -1,3 +1,4 @@
+/* src/styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,14 +27,18 @@
   --radius: 0.75rem;
 }
 
-html, body, #__next { height: 100%; }
+html, body, #__next { 
+  height: 100%; 
+}
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
 
-a { color: hsl(var(--foreground)); }
+a { 
+  color: hsl(var(--foreground)); 
+}
 
 input, select, textarea {
   border: 1px solid hsl(var(--input));
@@ -63,10 +68,18 @@ button {
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
 }
-.btn:hover { background-color: hsl(var(--primary) / 0.9); }
 
-.btn-outline { border: 1px solid hsl(var(--border)); }
-.btn-outline:hover { background-color: hsl(var(--accent)); }
+.btn:hover { 
+  background-color: hsl(var(--primary) / 0.9); 
+}
+
+.btn-outline { 
+  border: 1px solid hsl(var(--border)); 
+}
+
+.btn-outline:hover { 
+  background-color: hsl(var(--accent)); 
+}
 
 .badge {
   font-size: 0.75rem;
@@ -76,6 +89,19 @@ button {
   border: 1px solid hsl(var(--border));
 }
 
-table { width: 100%; font-size: 0.875rem; }
-th, td { padding: 0.75rem; text-align: left; vertical-align: middle; }
-thead th { position: sticky; top: 0; background-color: hsl(var(--background)); }
+table { 
+  width: 100%; 
+  font-size: 0.875rem; 
+}
+
+th, td { 
+  padding: 0.75rem; 
+  text-align: left; 
+  vertical-align: middle; 
+}
+
+thead th { 
+  position: sticky; 
+  top: 0; 
+  background-color: hsl(var(--background)); 
+}

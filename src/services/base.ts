@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "@/store/store";
 
 export const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3001/api/v1";
+  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:5000/api/v1";
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE,

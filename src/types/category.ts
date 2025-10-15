@@ -1,19 +1,15 @@
+// src/types/category.ts
+export type CategoryStatus = "ACTIVE" | "HIDDEN";
+
 export type Category = {
   _id: string;
   title: string;
   slug: string;
   image?: string;
-  status: "ACTIVE" | "HIDDEN";
+  status: CategoryStatus;
   createdAt?: string;
-  updatedAt: string;
+  updatedAt?: string;
 };
 
-
-export type CreateCategoryDTO = {
-  title: string;
-  slug: string;
-  image?: string;
-  status?: "ACTIVE" | "HIDDEN";
-};
-
-export type UpdateCategoryDTO = Partial<CreateCategoryDTO>;
+// UI helper: status থেকে active derive
+export const isActive = (c: Pick<Category, "status">) => c.status === "ACTIVE";
