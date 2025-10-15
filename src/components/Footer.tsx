@@ -16,7 +16,7 @@ import {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const brand = process.env.NEXT_PUBLIC_BRAND || "সোদাইগ্রাম";
+  const brand = process.env.NEXT_PUBLIC_BRAND || "ShodaiGram";
   const hotline = process.env.NEXT_PUBLIC_HOTLINE || "01700000000";
 
   return (

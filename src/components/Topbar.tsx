@@ -43,7 +43,7 @@ export default function Topbar() {
   const { data, isLoading } = useListCategoriesQuery();
   const cats = data?.data ?? [];
 
-  const brand = process.env.NEXT_PUBLIC_BRAND || "সোদাইগ্রাম";
+  const brand = process.env.NEXT_PUBLIC_BRAND || "ShodaiGram";
   const hotline = process.env.NEXT_PUBLIC_HOTLINE || "01700000000";
 
   const onSearch = (e: React.FormEvent) => {

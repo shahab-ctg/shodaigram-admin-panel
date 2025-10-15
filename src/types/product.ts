@@ -14,18 +14,6 @@ export type Product = {
   updatedAt?: string;
 };
 
-export type CreateProductDTO = {
-  title: string;
-  slug: string;
-  price: number;
-  stock?: number;
-  image?: string;
-  compareAtPrice?: number;
-  isDiscounted?: boolean;
-  status?: "ACTIVE" | "DRAFT" | "HIDDEN";
-  categorySlug?: string;
-  tagSlugs?: string[];
-};
 
 export type ProductListQuery = {
   page?: number;
@@ -35,3 +23,22 @@ export type ProductListQuery = {
   tag?: string;
   discounted?: "true" | "false";
 }
+
+export type AdminProductStatus = "ACTIVE" | "DRAFT" | "HIDDEN";
+
+// Backend AdminCreateProductDTO match
+export interface CreateProductDTO {
+  title: string;
+  slug: string;
+  price: number;
+  stock: number;
+  image?: string;
+  compareAtPrice?: number;
+  isDiscounted?: boolean;
+  status?: AdminProductStatus;
+  categorySlug?: string;
+  tagSlugs?: string[];
+}
+
+//  Backend AdminUpdateProductDTO = Partial(AdminCreateProductDTO)
+export type UpdateProductDTO = Partial<CreateProductDTO>;

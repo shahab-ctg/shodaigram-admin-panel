@@ -1,4 +1,4 @@
-// src/services/categories.api.ts
+
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./base";
 import type { Category, CategoryStatus } from "@/types/category";
@@ -7,7 +7,7 @@ type CreateCategoryDTO = {
   title: string;
   slug: string;
   image?: string;
-  status?: CategoryStatus; // না দিলে সার্ভার ডিফল্ট ACTIVE নিতে পারে
+  status?: CategoryStatus; 
 };
 
 type UpdateCategoryDTO = Partial<CreateCategoryDTO>;
@@ -27,14 +27,14 @@ export const categoriesApi = createApi({
       CreateCategoryDTO
     >({
       query: (body) => ({
-        url: "/admin/categories",
+        url: "admin/categories",
         method: "POST",
         body,
       }),
       invalidatesTags: ["Categories"],
     }),
 
-    // ⬇️ এখানে সিগনেচার { id, body } — এটা মেনে কল করতে হবে
+    
     updateCategory: builder.mutation<
       { ok: boolean; data: Category },
       { id: string; body: UpdateCategoryDTO }
