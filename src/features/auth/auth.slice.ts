@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-/** Auth slice state */
+
 export type AuthState = {
   /** JWT বা null */
   token: string | null;

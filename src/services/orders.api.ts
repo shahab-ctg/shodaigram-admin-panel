@@ -1,10 +1,11 @@
-// src/services/orders.api.ts
+
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./base";
 import type { ApiOk, Paginated } from "@/types";
 import type { Order, UpdateOrderDTO } from "@/types/order";
 
 /** যেকোনো শেইপ → { items, total, page, limit } */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalizeOrdersPayload(raw: any): Paginated<Order> {
   const box = raw?.data ?? raw;
 
@@ -51,6 +52,7 @@ export const ordersApi = createApi({
         if (args?.status) params.set("status", args.status);
         return `/orders?${params.toString()}`;
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       transformResponse: (raw: any): ApiOk<Paginated<Order>> => {
         return { ok: true, data: normalizeOrdersPayload(raw) };
       },

@@ -1,18 +1,18 @@
-// src/app/(protected)/layout.tsx
+
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default function ProtectedLayout({
+export default async function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Login-এর সময় আমরা accessToken কুকি সেট করব
+   const cookieStore = await cookies();
   const token =
-    cookies().get("accessToken")?.value || cookies().get("sg_admin")?.value; // থাকলে ব্যাকআপ কুকি
+    cookieStore.get("accessToken")?.value || cookieStore.get("sg_admin")?.value; // থাকলে ব্যাকআপ কুকি
 
   if (!token) {
-    redirect("/login"); // লগইন না থাকলে সরাসরি রিডাইরেক্ট
+    redirect("/login");
   }
   return <>{children}</>;
 }

@@ -5,6 +5,9 @@ import { useState } from "react";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
+
+export const dynamic = "force-dynamic";
+
 type CreateDTO = {
   title: string;
   slug: string;

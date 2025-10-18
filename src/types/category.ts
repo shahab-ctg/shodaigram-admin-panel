@@ -1,4 +1,4 @@
-// src/types/category.ts
+
 export type CategoryStatus = "ACTIVE" | "HIDDEN";
 
 export type Category = {

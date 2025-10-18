@@ -1,4 +1,4 @@
-// app/dashboard/page.tsx
+
 "use client";
 
 import {
@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export default function DashboardPage() {
-  // ✅ এই ডাটা পরে API থেকে আসবে
+  
   const stats = [
     {
       title: "Total Revenue",

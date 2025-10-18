@@ -219,7 +219,7 @@ export default function OrdersPage() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       toast.error(String(e?.data?.message || e?.data?.code || "Delete failed"));
-      // eslint-disable-next-line no-console
+
       console.error(e);
     }
   };
